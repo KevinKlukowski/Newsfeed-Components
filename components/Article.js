@@ -88,12 +88,68 @@ const data = [
           Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
   }
 ];
+const articles = document.querySelector('.articles');
 
+function articleMaker(object) {
+  const article = document.createElement('div');
+  const titlee = document.createElement('h2');
+  const datee = document.createElement('p');
+  const par1 = document.createElement('p');
+  const par2 = document.createElement('p');
+  const par3 = document.createElement('p');
+  const spans = document.createElement('span');
+
+  articles.appendChild(article);
+  article.appendChild(titlee);
+  article.appendChild(datee);
+  article.appendChild(par1);
+  article.appendChild(par2);
+  article.appendChild(par2);
+  article.appendChild(spans);
+
+  article.classList.add('article');
+  datee.classList.add('date')
+  spans.classList.add('expandButton');
+
+  spans.textContent = '+';
+  titlee.textContent = object.title;
+  datee.textContent = object.date;
+  par1.textContent = object.firstParagraph;
+  par2.textContent = object.secondParagraph;
+  par3.textContent = object.thirdParapraph;
+
+
+  spans.addEventListener('click', () => {
+    article.classList.toggle('article-open');
+  })
+  console.log(article);
+  return article;
+}
+
+const newData = data.map(dataElem => {
+  return articleMaker(dataElem);
+})
+
+newData.forEach(piece => {
+  articles.appendChild(piece)
+})
+
+// data.push({title: 'me myself and I', date: 'November 12, 2004', firstParagraph: 'A lovely tale of me, myself and I', 
+// secondParagraph: 'the movie got rave reviews', thirdParagraph: 'but Wendy Williams did NOT like it... sad'
+// });
+// console.log(data);
+
+
+// data.forEach((artElement) => {
+//   const newArticle = articleMaker(artElement);
+//   articles.appendChild(newArticle);
+// })
 /*
   Step 1: Write a component called 'articleMaker' to create an article.
   Your component is a function that takes an article object as its only argument,
   and returns a DOM node looking like the one below:
 
+    
   <div class="article">
     <h2>{title of the article}</h2>
     <p class="date">{date of the article}</p>
