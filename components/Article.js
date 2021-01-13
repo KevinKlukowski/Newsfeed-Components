@@ -97,20 +97,21 @@ function articleMaker(object) {
   const par1 = document.createElement('p');
   const par2 = document.createElement('p');
   const par3 = document.createElement('p');
-  const span = document.createElement('span');
+  const spans = document.createElement('span');
 
+  articles.appendChild(article);
   article.appendChild(titlee);
-  titlee.appendChild(datee);
-  datee.appendChild(par1);
-  par1.appendChild(par2);
-  par2.appendChild(par3);
-  par3.appendChild(span);
+  article.appendChild(datee);
+  article.appendChild(par1);
+  article.appendChild(par2);
+  article.appendChild(par2);
+  article.appendChild(spans);
 
   article.classList.add('article');
   datee.classList.add('date')
-  span.classList.add('expandButton');
+  spans.classList.add('expandButton');
 
-  span.textContent = '+';
+  spans.textContent = '+';
   titlee.textContent = object.title;
   datee.textContent = object.date;
   par1.textContent = object.firstParagraph;
@@ -118,10 +119,10 @@ function articleMaker(object) {
   par3.textContent = object.thirdParapraph;
 
 
-  span.addEventListener('click', (event) => {
+  spans.addEventListener('click', () => {
     article.classList.toggle('article-open');
-  });
-
+  })
+  console.log(article);
   return article;
 }
 
